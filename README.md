@@ -1,22 +1,25 @@
-# PyGameRules
+# pygame_ui_items
 
-PyGameRules es una librería open-source para Python que proporciona herramientas para gestionar contadores, temporizadores y estados de juego, diseñada específicamente para ser utilizada con Pygame. Esta librería es ideal para desarrolladores que buscan implementar mecánicas de juego de manera eficiente y modular.
+pygame_ui_items es una librería open-source para Python que proporciona herramientas para la creación y gestión de elementos de interfaz de usuario (UI) en Pygame, con un enfoque en la personalización, uso de una sintaxis tipo CSS para los estilos y facilidad de uso. Actualmente en la versión 0.1.0, se centra en la creación de botones, permitiendo definirlos en una sola línea de código y modificarlos con total libertad.
+Por el momento, la librería incluye:
+- Botones (Button): Permite crear botones con texto, posición, tamaño y estilo definido de manera similar a CSS.
+- Temas (Themes): Permite cambiar la apariencia de los botones de manera sencilla (posteriormente se añadirán más elementos UI a los que se les podrá aplicar estilos).
 
 ## Tabla de Contenidos
 
 - [Instalación](#instalación)
 - [Características](#características)
 - [Ejemplos de Uso](#ejemplos-de-uso)
-- [Referencia de la API](#referencia-de-la-api)
+- [Estructura del Proyecto](#estructura-del-proyecto)
 - [Pautas de Contribución](#pautas-de-contribución)
 - [Licencia](#licencia)
 
-
 ## Instalación
-Puedes instalar PyGameRules usando pip:
+
+Puedes instalar pygame_ui_items usando pip:
 
 ```bash
-pip install PyGameRules
+pip install pygame_ui_items
 ```
 
 Asegúrate también de tener Pygame instalado. Puedes instalarlo usando:
@@ -29,203 +32,83 @@ pip install pygame
 
 ## Características
 
-- **Contadores Inteligentes**: Maneja vidas, puntos y recursos con validación automática de rangos y eventos personalizables.
-- **Temporizadores Precisos**: Implementa cooldowns, delays y timers sincronizados con el loop de Pygame, soportando callbacks y reutilización.
-- **Máquina de Estados**: Sistema robusto para gestionar estados de juego (ej: pausa, menú, juego, game over) con transiciones seguras y callbacks.
-- **Sistema de Eventos**: Permite definir, suscribir y disparar eventos personalizados con prioridad y datos asociados.
-- **Patrones de Diseño**: Uso de Builder, Factory, Singleton y Observer para máxima flexibilidad y mantenibilidad.
-- **Compatible con Pygame**: Integración perfecta con el ciclo principal de Pygame y fácil de incorporar en proyectos existentes.
+- Creación de Botones en una Línea: Define botones con texto, posición, tamaño y estilo similar a CSS.
+- Personalización Completa: Modifica los botones por defecto o crea nuevos con estilos personalizados.
+- Fácil Integración: Se integra perfectamente con el ciclo principal de Pygame.
+- Temas: Permite cambiar la apariencia de los botones de manera sencilla.
 
 ---
 
 ## Ejemplos de Uso
 
-### 1. Contadores
-
-#### Contador Básico
+### 1. Creación de un botón simple
 
 ```python
-from pygame_rules.counters import Counter
+import pygame
+from pygame_ui_items.core.ui_manager import UIManager
+from pygame_ui_items.elements.button import Button
 
-score = Counter()
-score.increment()
-print(score.get_value())  # Salida: 1
-score.decrement()
-print(score.get_value())  # Salida: 0
-score.set_value(10)
-print(score.get_value())  # Salida: 10
-score.reset()
-print(score.get_value())  # Salida: 0
+pygame.init()
+screen = pygame.display.set_mode((800, 600))
+ui_manager = UIManager(screen)
+
+button = Button("Click Me", (100, 100), ui_manager) # Boton creado en una sola línea en lugar de 6 o mas
+
+running = True
+while running:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+        ui_manager.process_events(event)
+
+    ui_manager.update()
+    screen.fill((255, 255, 255))
+    ui_manager.draw()
+    pygame.display.flip()
+
+pygame.quit()
 ```
 
-#### Contador con Rango y eventos
+### 2. Modificación de Estilos
 
 ```python
-def on_change(value):
-    print(f"Nuevo valor: {value}")
+import pygame
+from pygame_ui_items.core.ui_manager import UIManager
+from pygame_ui_items.elements.button import Button
+from pygame_ui_items.styles.themes import Theme
 
-def on_max():
-    print("¡Valor máximo alcanzado!")
+pygame.init()
+screen = pygame.display.set_mode((800, 600))
+ui_manager = UIManager(screen)
 
-def on_min():
-    print("¡Valor mínimo alcanzado!")
+# Crear un tema personalizado
+custom_theme = Theme({
+    "normal_bg": (200, 200, 200),
+    "hover_bg": (220, 220, 220),
+    "text_color": (0, 0, 0),
+    "font_size": 24
+})
 
-lives = Counter(min_value=0, max_value=5, initial=3)
-lives.on_change = on_change
-lives.on_max_reached = on_max
-lives.on_min_reached = on_min
+button = Button("Click Me", (100, 100), ui_manager, theme=custom_theme)
 
-lives.increment(2)  # Nuevo valor: 5, ¡Valor máximo alcanzado!
-lives.decrement(5)  # Nuevo valor: 0, ¡Valor mínimo alcanzado!
+running = True
+while running:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+        ui_manager.process_events(event)
+
+    ui_manager.update()
+    screen.fill((255, 255, 255))
+    ui_manager.draw()
+    pygame.display.flip()
+
+pygame.quit()
 ```
 
-#### Contador Global (Singleton)
+### 3. Ejemplo completo (imagen)
 
-```python
-from pygame_rules.counters import Counter
-
-global_counter = Counter.global_instance()
-global_counter.increment()
-```
-
-### 2. Temporizadores Precisos
-
-#### Temporizador Countdown
-
-```python
-from pygame_rules.timers import Timer
-
-def on_timer_complete():
-    print("¡Tiempo terminado!")
-
-timer = Timer(duration=3, callback=on_timer_complete)
-timer.start()
-
-# En el loop principal de Pygame:
-while timer.is_running:
-    timer.update()  # Llama a update() en cada frame
-```
-
-#### Temporizador con Pausa y Reanudación
-
-```python
-timer = Timer(duration=10)
-timer.start()
-# ... después de algunos segundos
-timer.pause()
-# ... luego
-timer.resume()
-```
-
-#### Cooldown Reutilizable
-
-```python
-cooldown = Timer(duration=2, auto_reset=True)
-cooldown.start()
-# En cada frame:
-cooldown.update()
-if not cooldown.is_running:
-    print("Cooldown listo para reutilizar")
-    cooldown.start()
-```
-
-### 3. Máquina de Estados
-
-```python
-from pygame_rules.states import StateMachine, State
-
-def on_enter_play():
-    print("Entrando a PLAY")
-
-def on_exit_play():
-    print("Saliendo de PLAY")
-
-state_machine = StateMachine()
-state_machine.add_state(State("MENU"))
-state_machine.add_state(State("PLAY", on_enter=on_enter_play, on_exit=on_exit_play))
-state_machine.add_state(State("PAUSE"))
-state_machine.add_state(State("GAME_OVER"))
-
-state_machine.change_state("PLAY")   # Entrando a PLAY
-state_machine.change_state("PAUSE")  # Saliendo de PLAY
-```
-
-#### Stack de Estados (pausa y reanudación)
-
-```python
-from pygame_rules.states import StateMachine, State
-
-state_machine = StateMachine()
-state_machine.add_state(State("MENU"))
-state_machine.add_state(State("PLAY"))
-state_machine.add_state(State("PAUSE"))
-state_machine.add_state(State("GAME_OVER"))
-
-state_machine.change_state("PLAY")
-state_machine.change_state("PAUSE")
-```
-
-### 4. Sistema de Eventos
-
-```python
-from pygame_rules.event_system import EventSystem
-
-def on_custom_event(data):
-    print(f"Evento recibido con datos: {data}")
-
-event_system = EventSystem()
-event_system.subscribe("powerup_collected", on_custom_event)
-event_system.emit("powerup_collected", {"type": "vida", "valor": 1})
-```
-
-#### Evento con Prioridad
-
-```python
-def high_priority(data):
-    print("Alta prioridad")
-
-def low_priority(data):
-    print("Baja prioridad")
-
-event_system.subscribe("evento", low_priority, priority=10)
-event_system.subscribe("evento", high_priority, priority=1)
-event_system.emit("evento", {})
-# Salida: Alta prioridad \n Baja prioridad
-```
-
-## Referencia de la API
-
-- **Counter**: Clase para gestionar contadores.
-  * increment(amount=1)
-  * decrement(amount=1)
-  * set_value(value)
-  * get_value()
-  * set_max_value(max_value)
-  * set_min_value(min_value)
-  * events: on_change, on_max_reached, on_min_reached
-  
-- **Timer**: Clase para gestionar temporizadores.
-  * start(duration, callback=None)
-  * stop()
-  * pause()
-  * resume()
-  * update()
-  * is_running()
-  * is_paused()
-  * set_callback(callback)
-  
-- **StateMachine**: Clase para gestionar estados del juego.
-  * add_state(state: State)
-  * change_state(name: str)
-  * push_state(state_name: str)
-  * pop_state()
-  * get_current_state()
-  * callbacks: on_enter, on_exit, on_update
-
-- **EventSystem**: Clase para gestionar eventos personalizados.
-  * subscribe(event_name, priority=100)
-  * unsubscribe(event_name, callback)
-  * emit(event_name, data)
+![Ejemplo Completo](../PG2_Practica7/images/example-complete_image.png)
 
 ## Pautas de Contribución
 

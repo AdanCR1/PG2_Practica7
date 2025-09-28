@@ -1,9 +1,9 @@
 import pygame as pg
 from typing import Dict, Any, Callable
-from core.ui_element import UIElement
+from pygame_ui_items.ui_element import UIElement
 
 class Button(UIElement):
-    """Botón con estilo CSS-like"""
+    """ Button with CSS-like style """
     
     def __init__(self, x: int, y: int, width: int, height: int, 
                  text: str = "", onclick: Callable = None, **kwargs):
@@ -47,7 +47,7 @@ class Button(UIElement):
         if not self._visible:
             return
         
-        # Color basado en estado
+        """ State based color """
         if not self._enabled:
             color = self._styles["disabled_bg_color"]
         elif self._pressed:
@@ -57,13 +57,13 @@ class Button(UIElement):
         else:
             color = self._styles["bg_color"]
         
-        # Dibujar botón
+        """ Draw button """
         if self._styles["border_radius"] > 0:
             pg.draw.rect(surface, color, self._rect, border_radius=self._styles["border_radius"])
         else:
             surface.fill(color, self._rect)
         
-        # Dibujar texto
+        """ Draw text """
         if self._text:
             padding_x, padding_y = self._styles["padding"]
             content_rect = self._rect.inflate(-padding_x * 2, -padding_y * 2)
@@ -93,7 +93,7 @@ class Button(UIElement):
         
         return False
 
-# Clases con estilos predefinidos usando HERENCIA
+""" Classes with predefined styles """
 class RedButton(Button):
     def _get_default_styles(self) -> Dict[str, Any]:
         styles = super()._get_default_styles()

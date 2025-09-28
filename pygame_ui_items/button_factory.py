@@ -1,7 +1,20 @@
 from typing import Callable
-from button import Button, RedButton, BlueButton, GreenButton, YellowButton
+from pygame_ui_items.button import (
+    Button, 
+    RedButton, 
+    BlueButton, 
+    GreenButton, 
+    YellowButton
+)
 
-# FUNCIONES FACTORY CORREGIDAS (sin duplicación de parámetros)
+""" 
+    This module implements a series of factory functions for creating 
+    custom buttons within the Pygame-based graphical interface library. 
+    Each function simplifies button instantiation with default parameters
+    (x=0, y=0, width=120, height=40), allowing customization through 
+    optional arguments (**kwargs).
+"""
+
 def button_red(text: str, onclick: Callable = None, **kwargs) -> RedButton:
     x = kwargs.pop('x', 0)
     y = kwargs.pop('y', 0)

@@ -1,6 +1,6 @@
 import pygame as pg
 from typing import List
-from pygame_ui_items.core.ui_element import UIElement
+from pygame_ui_items.ui_element import UIElement
 
 class UIManager:
     """A simple UI Manager to handle UI elements."""

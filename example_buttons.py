@@ -1,18 +1,18 @@
-#!/usr/bin/env python3
-
 import pygame as pg
 import sys
-from ..src.pygame_ui_items.elements.button_factory import *
+from pygame_ui_items.button_factory import (
+    button_red,
+    button_blue,
+    button_green,
+    button_yellow,
+    create_button
+)
 
-# Inicializar pygame
 pg.init()
 
-# EJEMPLO DE USO
 if __name__ == "__main__":
     screen = pg.display.set_mode((800, 600))
     clock = pg.time.Clock()
-    
-    print("¡La librería funciona correctamente! ✅")
     
     btn_red = button_red("Eliminar", lambda: print("¡Eliminado!"), x=100, y=100)
     btn_blue = button_blue("Guardar", lambda: print("¡Guardado!"), x=100, y=160)
@@ -20,7 +20,7 @@ if __name__ == "__main__":
     btn_yellow = button_yellow("Advertencia", lambda: print("¡Cuidado!"), x=100, y=280)
     
     btn_custom = create_button(
-        "Personalizado", 
+        "Boton Personalizado", 
         lambda: print("¡Personalizado!"),
         x=100, 
         y=340,

@@ -2,7 +2,7 @@ import pygame as pg
 from typing import *
 
 class UIElement:
-    """Clase base abstracta para elementos UI"""
+    """Abstract base class for UI elements"""
     def __init__(self, x: int, y: int, width: int, height: int, **kwargs):
         self._rect = pg.Rect(x, y, width, height)
         self._visible = True

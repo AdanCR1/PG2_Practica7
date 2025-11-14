@@ -40,7 +40,7 @@ button_green("Mi Botón", mi_callback, x=100, y=100)
 - `button_blue()` - Azul principal
 - `button_purple()` - Púrpura creativo
 
-![Texto alternativo](images\buttons_solid.png)
+<img width="2105" height="132" alt="Captura de pantalla 2025-11-14 124510" src="https://github.com/user-attachments/assets/2d0c3d20-2426-466d-a326-172471da2045" />
 
 ---
 

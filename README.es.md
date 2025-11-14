@@ -161,7 +161,7 @@ btn_custom = create_button(
 ```
 </details>
 
-<details> <summary><b>4. Gestión de Modales</b> (Click para expandir)</summary>
+<details> <summary><b>4. Gestión de Modales (Pila)</b> (Click para expandir)</summary>
 
 ```python
 import pygame as pg
@@ -206,8 +206,6 @@ ui_manager.add_element(button_green("Abrir Confirmación", open_confirm, x=100, 
 ## Pautas de Contribución
 
 ¡Las contribuciones son bienvenidas! Si deseas contribuir, por favor sigue estos pasos:
-
-0. Abre un issue para discutir lo que te gustaría cambiar.
 
 1. Haz un fork del repositorio.
 

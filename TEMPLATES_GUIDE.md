@@ -40,7 +40,8 @@ button_green("Mi Botón", mi_callback, x=100, y=100)
 - `button_blue()` - Azul principal
 - `button_purple()` - Púrpura creativo
 
-<img width="2105" height="132" alt="Captura de pantalla 2025-11-14 124510" src="https://github.com/user-attachments/assets/2d0c3d20-2426-466d-a326-172471da2045" />
+<img width="2106" height="142" alt="Captura de pantalla 2025-11-14 124338" src="https://github.com/user-attachments/assets/bbd5ad1c-3d79-4c7e-90ad-67edb0a3ed53" />
+
 
 ---
 
@@ -68,7 +69,7 @@ button_outline_green("Mi Botón", mi_callback, x=100, y=100)
 - `button_outline_blue()` - Contorno azul
 - `button_outline_purple()` - Contorno púrpura
 
-![Texto alternativo](images\buttons_outline.png)
+<img width="2098" height="121" alt="Captura de pantalla 2025-11-14 124438" src="https://github.com/user-attachments/assets/dc859a12-4b3f-4443-b974-00d57d738818" />
 
 ---
 
@@ -96,7 +97,7 @@ button_gradient_green("Mi Botón", mi_callback, x=100, y=100)
 - `button_gradient_blue()` - Gradiente azul
 - `button_gradient_purple()` - Gradiente púrpura
 
-![Texto alternativo](images\buttons_gradient.png)
+<img width="2105" height="132" alt="Captura de pantalla 2025-11-14 124455" src="https://github.com/user-attachments/assets/917c5838-0c5e-48ab-a540-b4cb17493817" />
 
 ---
 
@@ -124,7 +125,7 @@ button_neumorphic_green("Mi Botón", mi_callback, x=100, y=100)
 - `button_neumorphic_blue()` - Neumórfico azul
 - `button_neumorphic_purple()` - Neumórfico púrpura
 
-![Texto alternativo](images\buttons_neumorphic.png)
+<img width="2105" height="132" alt="Captura de pantalla 2025-11-14 124510" src="https://github.com/user-attachments/assets/a604ccfe-f206-4e06-b85a-cc29a87fc8e8" />
 
 ---
 
@@ -143,6 +144,8 @@ modal = create_alert_modal(
 )
 ```
 
+<img width="567" height="312" alt="Captura de pantalla 2025-11-14 125425" src="https://github.com/user-attachments/assets/15898733-3b59-4fb0-ad19-e1ca884bc21e" />
+
 ---
 
 #### **2. Modal de Confirmación**
@@ -157,6 +160,8 @@ modal = create_confirm_modal(
 )
 ```
 
+<img width="655" height="346" alt="Captura de pantalla 2025-11-14 125442" src="https://github.com/user-attachments/assets/9c9b80a5-c16d-4938-ae33-5631ffa98d24" />
+
 ---
 
 #### **3. Modal de Error**
@@ -170,6 +175,8 @@ modal = create_error_modal(
 )
 ```
 
+<img width="545" height="289" alt="Captura de pantalla 2025-11-14 125454" src="https://github.com/user-attachments/assets/e9a239a6-7b6c-49d7-ac67-5b5d65cdb31a" />
+
 ---
 
 #### **4. Modal de Éxito**
@@ -182,6 +189,8 @@ modal = create_success_modal(
     on_close=mi_callback
 )
 ```
+
+<img width="588" height="304" alt="Captura de pantalla 2025-11-14 125507" src="https://github.com/user-attachments/assets/f792d595-764f-4b0a-9ba3-8304eeee1965" />
 
 ---
 
@@ -197,6 +206,8 @@ modal = create_warning_modal(
 )
 ```
 
+<img width="686" height="338" alt="Captura de pantalla 2025-11-14 125523" src="https://github.com/user-attachments/assets/b450a5f0-89d5-4047-a407-2f15b354f49d" />
+
 ---
 
 #### **6. Modal de Información**
@@ -209,6 +220,8 @@ modal = create_info_modal(
     on_close=mi_callback
 )
 ```
+
+<img width="620" height="304" alt="Captura de pantalla 2025-11-14 125536" src="https://github.com/user-attachments/assets/e8ca8811-fea0-41f2-aa1c-9ca5731205e5" />
 
 ---
 
@@ -227,6 +240,8 @@ modal = create_input_modal(
     on_cancel=cancelar_callback
 )
 ```
+
+<img width="717" height="369" alt="Captura de pantalla 2025-11-14 125549" src="https://github.com/user-attachments/assets/6e25800c-9448-4079-920a-4314e44f9449" />
 
 ---
 

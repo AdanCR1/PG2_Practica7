@@ -6,7 +6,7 @@
 </div>
 
 <p align="center">
-  <img alt="Version" src="https://img.shields.io/badge/version-0.0.2-brightgreen.svg">
+  <img alt="Version" src="https://img.shields.io/badge/version-1.0.0-brightgreen.svg">
   <img alt="Licencia" src="https://img.shields.io/badge/license-MIT-blue.svg">
   <a href="https://pypi.org/project/pygame_ui_items/">
     <img alt="PyPI" src="https://img.shields.io/pypi/v/pygame_ui_items.svg">
@@ -32,7 +32,7 @@ La versión actual (0.1.0) incluye:
 ## Translation (Traducción)
 * **[English Version (README.es.md)](README.es.md)**
 
-## 🎨 Galería de Componentes
+## Galería de Componentes
 ¡Revisa todos los estilos de botones predefinidos con sus demos!
 
 * **[Ver la Galería de Componentes (COMPONENT_GALLERY.md)](COMPONENT_GALLERY.md)**
@@ -219,6 +219,7 @@ ui_manager.add_element(button_green("Abrir Confirmación", open_confirm, x=100, 
 
 > [!Note]
 > Asegúrate de seguir las convenciones de codificación y de agregar pruebas para cualquier nueva funcionalidad.
+> Si los archivos demo de /examples/ no funcionan, muévelos a la carpeta raíz del proyecto para que puedan encontrar la librería.
 
 ## Licencia
 

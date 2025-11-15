@@ -1,13 +1,13 @@
 <div align="center">
 
 # pygame_ui_items
-**Una librería de UI modular para Pygame con gestión de estado y estilos personalizables.**
+**A modular UI library for Pygame with state management and customizable styles.**
 
 </div>
 
 <p align="center">
-  <img alt="Version" src="https://img.shields.io/badge/version-0.0.2-brightgreen.svg">
-  <img alt="Licencia" src="https://img.shields.io/badge/license-MIT-blue.svg">
+  <img alt="Version" src="https://img.shields.io/badge/version-1.0.0-brightgreen.svg">
+  <img alt="License" src="https://img.shields.io/badge/license-MIT-blue.svg">
   <a href="https://pypi.org/project/pygame_ui_items/">
     <img alt="PyPI" src="https://img.shields.io/pypi/v/pygame_ui_items.svg">
   </a>
@@ -16,67 +16,67 @@
   <img alt="Tests" src="https://img.shields.io/badge/tests-31%20passed-success.svg">
 </p>
 
-`pygame_ui_items` es una librería open-source para Python que proporciona herramientas para la creación y gestión de elementos de interfaz de usuario (UI) en Pygame.
+`pygame_ui_items` is an open-source library for Python that provides tools for creating and managing user interface (UI) elements in Pygame.
 
-Se enfoca en la **personalización**, una **gestión de estado** robusta (Pila/Stack) y la **facilidad de uso**, permitiendo definir componentes complejos en una sola línea de código.
+It focuses on **customization**, robust **state management** (Stack), and **ease of use**, allowing you to define complex components in a single line of code.
 
-La versión actual (0.1.0) incluye:
-* **Gestor de UI (`UIManager`)**: Maneja el ciclo de eventos, actualización y dibujado.
-* **Botones (`Button`)**: Componentes personalizables con una paleta de 12 colores y **4 estilos predefinidos** (Sólido, Contorno, **Gradiente ✨**, **Neumórfico ✨**).
-* **Gestor de Pila (`WindowStack`)**: Controla "escenas" o ventanas, asegurando que solo la ventana superior reciba eventos (ideal para menús, pausa, etc.).
-* **Modales (`Modal`)**: **7 plantillas** de ventanas emergentes predefinidas (`Alerta`, `Confirmación`, `Error`, **Éxito ✨**, **Advertencia ✨**, **Información ✨**, **Input ✨**).
-* **Cola de Eventos (`EventQueue`) ✨**: Sistema de prioridad con heap para eventos diferidos, notificaciones y animaciones.
+The current version (0.1.0) includes:
+* **UI Manager (`UIManager`)**: Handles the event loop, updates, and drawing.
+* **Buttons (`Button`)**: Customizable components with a palette of 12 colors and **4 predefined styles** (Solid, Outline, **Gradient ✨**, **Neumorphic ✨**).
+* **Stack Manager (`WindowStack`)**: Controls "scenes" or windows, ensuring that only the top window receives events (ideal for menus, pause screens, etc.).
+* **Modals (`Modal`)**: **7 predefined templates** for pop-up windows (`Alert`, `Confirmation`, `Error`, **Success ✨**, **Warning ✨**, **Info ✨**, **Input ✨**).
+* **Event Queue (`EventQueue`) ✨**: A priority system with a heap for deferred events, notifications, and animations.
 
 ---
 
-## Translation (Traducción)
-* **[English Version (README.es.md)](README.es.md)**
+## Translation
+* **[Spanish Version (README.es.md)](README.es.md)**
 
-## 🎨 Galería de Componentes
-¡Revisa todos los estilos de botones predefinidos con sus demos!
+## Component Gallery
+Check out all the predefined button styles with their demos!
 
-* **[Ver la Galería de Componentes (COMPONENT_GALLERY.md)](COMPONENT_GALLERY.md)**
+* **[View the Component Gallery (COMPONENT_GALLERY.md)](COMPONENT_GALLERY.md)**
 
-## Tabla de Contenidos
+## Table of Contents
 
-- [Instalación](#instalación)
-- [Características](#características)
-- [Ejemplos de Uso](#ejemplos-de-uso)
-- [Pautas de Contribución](#pautas-de-contribución)
-- [Licencia](#licencia)
+- [Installation](#installation)
+- [Features](#features)
+- [Usage Examples](#usage-examples)
+- [Contribution Guidelines](#contribution-guidelines)
+- [License](#license)
 
-## Instalación
+## Installation
 
-Para instalar `pygame_ui_items` ejecuta:
+To install `pygame_ui_items`, run:
 
 ```bash
 pip install pygame_ui_items
 ```
 
 
-Asegúrate también de tener Pygame instalado. O tambien puedes ejecutar el requirements.txt que incluye Pygame y pytest:
+Make sure you also have Pygame installed. Alternatively, you can run the `requirements.txt` file, which includes Pygame and pytest:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-## Características
+## Features
 
-- **Gestión de Estado (Pila):** Usa un WindowStack para gestionar estados de juego (menús, pausa, juego) de forma limpia (LIFO).
+- **State Management (Stack):** Use a `WindowStack` to manage game states (menus, pause, gameplay) cleanly (LIFO).
 
-- **Estructura Jerárquica (Árbol):** Cada Window o Modal actúa como un nodo que contiene una lista de elementos hijos (botones, texto).
+- **Hierarchical Structure (Tree):** Each `Window` or `Modal` acts as a node containing a list of child elements (buttons, text).
 
-- **Fábrica de Componentes:** Crea botones listos para usar con una sola función (button_red(), button_outline_blue(), etc.).
+- **Component Factory:** Create ready-to-use buttons with a single function (`button_red()`, `button_outline_blue()`, etc.).
 
-- **Paleta de 12 Colores:** Un conjunto de 12 colores predefinidos (Gris, Negro, Rojo, Azul, etc.) disponibles para todos los estilos.
+- **Palette of 12 Colors:** A set of 12 predefined colors (Gray, Black, Red, Blue, etc.) available for all styles.
 
-- **Múltiples Estilos:** Inicia con dos estilos de botones (Sólido y Contorno) para adaptarse a tu diseño.
+- **Multiple Styles:** Start with two button styles (Solid and Outline) to fit your design.
 
-- **Altamente Personalizable:** Pasa parámetros (bg_color, border_radius) para sobreescribir cualquier estilo predefinido.
+- **Highly Customizable:** Pass parameters (`bg_color`, `border_radius`) to override any predefined style.
 
-## Ejemplos de Uso
+## Usage Examples
 
-<details> <summary><b>1. Crear un botón simple</b> (Click para expandir)</summary>
+<details> <summary><b>1. Create a Simple Button</b> (Click to expand)</summary>
 
 ```python
 import pygame
@@ -88,7 +88,7 @@ screen = pygame.display.set_mode((800, 600))
 ui_manager = UIManager()
 
 # Create a button with a lambda function as a callback
-button = create_button("Click Me", lambda: print("¡Clic!"), x=100, y=100)
+button = create_button("Click Me", lambda: print("Clicked!"), x=100, y=100)
 ui_manager.add_element(button)
 
 running = True
@@ -108,7 +108,7 @@ pygame.quit()
 
 </details>
 
-<details> <summary><b>2. Usar los nuevos estilos (Sólido y Contorno)</b> (Click para expandir)</summary>
+<details> <summary><b>2. Use New Styles (Solid and Outline)</b> (Click to expand)</summary>
 
 ```python
 import pygame as pg
@@ -144,7 +144,7 @@ sys.exit()
 
 </details>
 
-<details> <summary><b>3. Botón 100% Personalizado</b> (Click para expandir)</summary>
+<details> <summary><b>3. Fully Customized Button</b> (Click to expand)</summary>
 
 ```python
 # You can override any style, even predefined ones
@@ -161,7 +161,7 @@ btn_custom = create_button(
 ```
 </details>
 
-<details> <summary><b>4. Gestión de Modales</b> (Click para expandir)</summary>
+<details> <summary><b>4. Modal Management (Stack)</b> (Click to expand)</summary>
 
 ```python
 import pygame as pg
@@ -177,22 +177,22 @@ ui_manager = UIManager() # The UIManager controls the stack
 # --- Callbacks ---
 def open_alert():
     alert_modal = create_alert_modal(
-        SCREEN_WIDTH, SCREEN_HEIGHT, "¡Esto es una alerta!",
+        SCREEN_WIDTH, SCREEN_HEIGHT, "This is an alert!",
         on_close=lambda: ui_manager.window_stack.pop() # Close the modal (POP)
     )
     ui_manager.window_stack.push(alert_modal) # Add the modal to the stack (PUSH)
 
 def open_confirm():
     confirm_modal = create_confirm_modal(
-        SCREEN_WIDTH, SCREEN_HEIGHT, "¿Estás seguro?",
-        on_confirm=lambda: (print("Confirmado"), ui_manager.window_stack.pop()),
-        on_cancel=lambda: (print("Cancelado"), ui_manager.window_stack.pop())
+        SCREEN_WIDTH, SCREEN_HEIGHT, "Are you sure?",
+        on_confirm=lambda: (print("Confirmed"), ui_manager.window_stack.pop()),
+        on_cancel=lambda: (print("Cancelled"), ui_manager.window_stack.pop())
     )
     ui_manager.window_stack.push(confirm_modal)
 
 # Background buttons (only work if the stack is empty)
-ui_manager.add_element(button_green("Abrir Alerta", open_alert, x=100, y=100))
-ui_manager.add_element(button_green("Abrir Confirmación", open_confirm, x=100, y=160))
+ui_manager.add_element(button_green("Open Alert", open_alert, x=100, y=100))
+ui_manager.add_element(button_green("Open Confirmation", open_confirm, x=100, y=160))
 
 # ... (Pygame main loop) ...
 # In the loop:
@@ -203,25 +203,24 @@ ui_manager.add_element(button_green("Abrir Confirmación", open_confirm, x=100, 
 ```
 </details>
 
-## Pautas de Contribución
+## Contribution Guidelines
 
-¡Las contribuciones son bienvenidas! Si deseas contribuir, por favor sigue estos pasos:
+Contributions are welcome! If you'd like to contribute, please follow these steps:
 
-0. Abre un issue para discutir lo que te gustaría cambiar.
+1. Fork the repository.
 
-1. Haz un fork del repositorio.
+2. Create a new branch (`git checkout -b feature/new-feature`)
 
-2. Crea una nueva rama (git checkout -b feature/nueva-caracteristica).
+3. Make your changes and commit them (`git commit -m 'feat: Add new feature'`)
 
-3. Realiza tus cambios y haz commit (git commit -m 'feat: Añadir nueva característica').
+4. Push to the branch (`git push origin feature/new-feature`)
 
-4. Haz push a la rama (git push origin feature/nueva-caracteristica).
-
-5. Abre un Pull Request.
+5. Open a Pull Request.
 
 > [!Note]
-> Asegúrate de seguir las convenciones de codificación y de agregar pruebas para cualquier nueva funcionalidad.
+> Make sure to follow coding conventions and add tests for any new functionality.
+> If the demo files in `/examples/` don't work, move them to the project's root folder so they can find the library.
 
-## Licencia
+## License
 
-Este proyecto está licenciado bajo la Licencia MIT. Consulta el archivo [LICENSE](LICENSE) para más detalles.
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.

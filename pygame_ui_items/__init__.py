@@ -11,7 +11,7 @@ from pygame_ui_items.event_queue import EventQueue, UIEvent
 from pygame_ui_items.window_stack import Window, WindowStack
 from pygame_ui_items.modal import *
 
-__version__ = "0.1.0"
+__version__ = "1.0.0"
 __all__ = [
     # Base
     "UIElement",
